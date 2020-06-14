@@ -1,0 +1,265 @@
+<!doctype html>
+
+<html>
+ <head>
+  <meta charset="utf-16" />
+  <title>
+   Text Converter
+  </title>
+  <link rel="icon" href="images/a.png" />
+  <style type="text/css">
+body {
+ padding:20px;
+ font-family:Ubuntu,Arial;
+ font-size:24px;
+}
+textarea {
+ display:block;
+ margin:0 auto;
+ height:120px;
+ width:70%;
+ text-align:center;
+ font-family:Ubuntu,Arial;
+ font-size:24px;
+ border-radius:15px;
+ box-shadow:0 2px 6px #000 inset;
+ border:3px solid #aaa;
+ padding:5px;
+ transition:box-shadow .3s ease,border-color .3s ease;
+}
+textarea:hover {
+ box-shadow:0 2px 10px #0aa inset;
+ border-color:#0aa;
+}
+button {
+ background-color:transparent;
+ border:0;
+ font-family:Ubuntu,Arial;
+ font-size:16px;
+ cursor:pointer;
+}
+
+.space {
+ height:12px;
+ width:4px;
+ background-color:#aaa;
+ display:inline-block;
+ margin-top:-4px;
+}
+.box {
+ padding:25px;
+ font-weight:bold;
+ background-color:#eee;
+ text-align:center;
+ margin:0 auto;
+ border:4px rgba(0,0,0,0.1);
+}
+.header {
+ width:75%;
+ border-radius:20px;
+ font-size:36px;
+ height:40px;
+ border-style:solid;
+ box-shadow:0 2px 6px #000 inset;
+}
+.credit {
+ border-radius:0 0 20px 20px;
+ background-color:#f3f3f3;
+ width:20%;
+ margin-left:55%;
+ margin-bottom:16px;
+ border-style:none solid solid solid;
+ box-shadow:0 1px 6px #000 inset;
+}
+.guide {
+ width:30%;
+ height:35px;
+}
+.guideTop {
+ border-radius:20px 20px 0 0;
+ box-shadow:0 2px 6px #000 inset;
+ border-style:solid solid none solid;
+}
+.guideBottom {
+ border-radius:0 0 20px 20px;
+ box-shadow:0 -2px 6px #000 inset;
+ border-style:none solid solid solid;
+}
+.buttonSet {
+ margin:0 auto;
+ text-align:center;
+ height:43px;
+ width:70%;
+ overflow:auto;
+ border:4px #777;
+ border-style:none solid;
+ white-space:nowrap;
+}
+.whiteSpace {
+ height:24px;
+}
+  </style>
+ </head>
+
+ <body>
+  <div class="box header" id="title">
+   Unicode Text Converter
+  </div>
+
+  <div class="box credit" id="credit">
+   Work in progress!
+  </div>
+
+  <div class="box guide guideTop">
+   Input text below:
+  </div>
+
+  <textarea id="input"></textarea>
+
+  <div class="whiteSpace"></div>
+
+  <div class="buttonSet">
+   <button onclick="fullwidth();">
+    Ｆｕｌｌｗｉｄｔｈ
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="modifier();">
+    ᴹᵒᵈⁱᶠⁱᵉʳ
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="monospace();">
+    𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="sans();">
+    𝖲𝖺𝗇𝗌
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="italicSans();">
+    𝘐𝘵𝘢𝘭𝘪𝘤 𝘚𝘢𝘯𝘴
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="boldSans();">
+    𝗕𝗼𝗹𝗱 𝗦𝗮𝗻𝘀
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="boldItalicSans();">
+    𝘽𝙤𝙡𝙙 𝙄𝙩𝙖𝙡𝙞𝙘 𝙎𝙖𝙣𝙨
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="fraktur();">
+    𝔉𝔯𝔞𝔨𝔱𝔲𝔯
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="boldFraktur();">
+    𝕭𝖔𝖑𝖉 𝕱𝖗𝖆𝖐𝖙𝖚𝖗
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="doubleStruck();">
+    𝔻𝕠𝕦𝕓𝕝𝕖-𝕊𝕥𝕣𝕦𝕔𝕜
+   </button>
+
+   <div class="space"></div>
+
+   <button onclick="script();">
+    𝓢𝓬𝓻𝓲𝓹𝓽
+   </button>
+  </div>
+
+  <div class="whiteSpace"></div>
+
+  <textarea id="output"></textarea>
+
+  <div class="box guide guideBottom">
+   Output appears here:
+  </div>
+
+  <script type="text/javascript">
+fullwidth = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "ａ").replace(/b/g, "ｂ").replace(/c/g, "ｃ").replace(/d/g, "ｄ").replace(/e/g, "ｅ").replace(/f/g, "ｆ").replace(/g/g, "ｇ").replace(/h/g, "ｈ").replace(/i/g, "ｉ").replace(/j/g, "ｊ").replace(/k/g, "ｋ").replace(/l/g, "ｌ").replace(/m/g, "ｍ").replace(/n/g, "ｎ").replace(/o/g, "ｏ").replace(/p/g, "ｐ").replace(/q/g, "ｑ").replace(/r/g, "ｒ").replace(/s/g, "ｓ").replace(/t/g, "ｔ").replace(/u/g, "ｕ").replace(/v/g, "ｖ").replace(/w/g, "ｗ").replace(/x/g, "ｘ").replace(/y/g, "ｙ").replace(/z/g, "ｚ").replace(/A/g, "Ａ").replace(/B/g, "Ｂ").replace(/C/g, "Ｃ").replace(/D/g, "Ｄ").replace(/E/g, "Ｅ").replace(/F/g, "Ｆ").replace(/G/g, "Ｇ").replace(/H/g, "Ｈ").replace(/I/g, "Ｉ").replace(/J/g, "Ｊ").replace(/K/g, "Ｋ").replace(/L/g, "Ｌ").replace(/M/g, "Ｍ").replace(/N/g, "Ｎ").replace(/O/g, "Ｏ").replace(/P/g, "Ｐ").replace(/Q/g, "Ｑ").replace(/R/g, "Ｒ").replace(/S/g, "Ｓ").replace(/T/g, "Ｔ").replace(/U/g, "Ｕ").replace(/V/g, "Ｖ").replace(/W/g, "Ｗ").replace(/X/g, "Ｘ").replace(/Y/g, "Ｙ").replace(/Z/g, "Ｚ").replace(/1/g, "１").replace(/2/g, "２").replace(/3/g, "３").replace(/4/g, "４").replace(/5/g, "５").replace(/6/g, "６").replace(/7/g, "７").replace(/8/g, "８").replace(/9/g, "９").replace(/0/g, "０").replace(/`/g, "｀").replace(/@/g, "＠").replace(/\^/g, "＾").replace(/&/g, "＆").replace(/\*/g, "＊").replace(/\(/g, "（").replace(/\)/g, "）").replace(/_/g, "＿").replace(/-/g, "－").replace(/\+/g, "＋").replace(/\=/g, "＝").replace(/\//g, "／").replace(/\\/g, "＼").replace(/\]/g, "］").replace(/\[/g, "［").replace(/\?/g, "？").replace(/\</g, "＜").replace(/\>/g, "＞").replace(/\:/g, "：").replace(/\;/g, "；").replace(/\'/g, "＇").replace(/\|/g, "｜").replace(/\{/g, "｛").replace(/\}/g, "｝").replace(/~/g, "～").replace(/\,/g, "，").replace(/\./g, "．").replace(/ /g, " ");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "Ｕｎｉｃｏｄｅ Ｔｅｘｔ Ｃｏｎｖｅｒｔｅｒ";
+}
+modifier = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "ᵃ").replace(/b/g, "ᵇ").replace(/c/g, "ᶜ").replace(/d/g, "ᵈ").replace(/e/g, "ᵉ").replace(/f/g, "ᶠ").replace(/g/g, "ᵍ").replace(/h/g, "ʰ").replace(/i/g, "ⁱ").replace(/j/g, "ʲ").replace(/k/g, "ᵏ").replace(/l/g, "ˡ").replace(/m/g, "ᵐ").replace(/n/g, "ⁿ").replace(/o/g, "ᵒ").replace(/p/g, "ᵖ").replace(/r/g, "ʳ").replace(/s/g, "ˢ").replace(/t/g, "ᵗ").replace(/u/g, "ᵘ").replace(/v/g, "ᵛ").replace(/w/g, "ʷ").replace(/x/g, "ˣ").replace(/y/g, "ʸ").replace(/z/g, "ᶻ").replace(/A/g, "ᴬ").replace(/B/g, "ᴮ").replace(/C/g, "ᶜ").replace(/D/g, "ᴰ").replace(/E/g, "ᴱ").replace(/F/g, "ᶠ").replace(/G/g, "ᴳ").replace(/H/g, "ᴴ").replace(/I/g, "ᴵ").replace(/J/g, "ᴶ").replace(/K/g, "ᴷ").replace(/L/g, "ᴸ").replace(/M/g, "ᴹ").replace(/N/g, "ᴺ").replace(/O/g, "ᴼ").replace(/P/g, "ᴾ").replace(/R/g, "ᴿ").replace(/S/g, "ˢ").replace(/T/g, "ᵀ").replace(/U/g, "ᵁ").replace(/V/g, "ᵛ").replace(/W/g, "ᵂ").replace(/X/g, "ˣ").replace(/Y/g, "ʸ").replace(/Z/g, "ᶻ").replace(/1/g, "¹").replace(/2/g, "²").replace(/3/g, "³").replace(/4/g, "⁴").replace(/5/g, "⁵").replace(/6/g, "⁶").replace(/7/g, "⁷").replace(/8/g, "⁸").replace(/9/g, "⁹").replace(/0/g, "⁰").replace(/`/g, "ˋ").replace(/\^/g, "˄").replace(/-/g, "˗").replace(/\+/g, "˖").replace(/\</g, "˂").replace(/\>/g, "˃").replace(/\'/g, "ʼ");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "ᵁⁿⁱᶜᵒᵈᵉ ᵀᵉˣᵗ ᶜᵒⁿᵛᵉʳᵗᵉʳ";
+}
+monospace = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝚊").replace(/b/g, "𝚋").replace(/c/g, "𝚌").replace(/d/g, "𝚍").replace(/e/g, "𝚎").replace(/f/g, "𝚏").replace(/g/g, "𝚐").replace(/h/g, "𝚑").replace(/i/g, "𝚒").replace(/j/g, "𝚓").replace(/k/g, "𝚔").replace(/l/g, "𝚕").replace(/m/g, "𝚖").replace(/n/g, "𝚗").replace(/o/g, "𝚘").replace(/p/g, "𝚙").replace(/q/g, "𝚚").replace(/r/g, "𝚛").replace(/s/g, "𝚜").replace(/t/g, "𝚝").replace(/u/g, "𝚞").replace(/v/g, "𝚟").replace(/w/g, "𝚠").replace(/x/g, "𝚡").replace(/y/g, "𝚢").replace(/z/g, "𝚣").replace(/A/g, "𝙰").replace(/B/g, "𝙱").replace(/C/g, "𝙲").replace(/D/g, "𝙳").replace(/E/g, "𝙴").replace(/F/g, "𝙵").replace(/G/g, "𝙶").replace(/H/g, "𝙷").replace(/I/g, "𝙸").replace(/J/g, "𝙹").replace(/K/g, "𝙺").replace(/L/g, "𝙻").replace(/M/g, "𝙼").replace(/N/g, "𝙽").replace(/O/g, "𝙾").replace(/P/g, "𝙿").replace(/Q/g, "𝚀").replace(/R/g, "𝚁").replace(/S/g, "𝚂").replace(/T/g, "𝚃").replace(/U/g, "𝚄").replace(/V/g, "𝚅").replace(/W/g, "𝚆").replace(/X/g, "𝚇").replace(/Y/g, "𝚈").replace(/Z/g, "𝚉").replace(/1/g, "𝟷").replace(/2/g, "𝟸").replace(/3/g, "𝟹").replace(/4/g, "𝟺").replace(/5/g, "𝟻").replace(/6/g, "𝟼").replace(/7/g, "𝟽").replace(/8/g, "𝟾").replace(/9/g, "𝟿").replace(/0/g, "𝟶");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝚄𝚗𝚒𝚌𝚘𝚍𝚎 𝚃𝚎𝚡𝚝 𝙲𝚘𝚗𝚟𝚎𝚛𝚝𝚎𝚛";
+}
+sans = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝖺").replace(/b/g, "𝖻").replace(/c/g, "𝖼").replace(/d/g, "𝖽").replace(/e/g, "𝖾").replace(/f/g, "𝖿").replace(/g/g, "𝗀").replace(/h/g, "𝗁").replace(/i/g, "𝗂").replace(/j/g, "𝗃").replace(/k/g, "𝗄").replace(/l/g, "𝗅").replace(/m/g, "𝗆").replace(/n/g, "𝗇").replace(/o/g, "𝗈").replace(/p/g, "𝗉").replace(/q/g, "𝗊").replace(/r/g, "𝗋").replace(/s/g, "𝗌").replace(/t/g, "𝗍").replace(/u/g, "𝗎").replace(/v/g, "𝗏").replace(/w/g, "𝗐").replace(/x/g, "𝗑").replace(/y/g, "𝗒").replace(/z/g, "𝗓").replace(/A/g, "𝖠").replace(/B/g, "𝖡").replace(/C/g, "𝖢").replace(/D/g, "𝖣").replace(/E/g, "𝖤").replace(/F/g, "𝖥").replace(/G/g, "𝖦").replace(/H/g, "𝖧").replace(/I/g, "𝖨").replace(/J/g, "𝖩").replace(/K/g, "𝖪").replace(/L/g, "𝖫").replace(/M/g, "𝖬").replace(/N/g, "𝖭").replace(/O/g, "𝖮").replace(/P/g, "𝖯").replace(/Q/g, "𝖰").replace(/R/g, "𝖱").replace(/S/g, "𝖲").replace(/T/g, "𝖳").replace(/U/g, "𝖴").replace(/V/g, "𝖵").replace(/W/g, "𝖶").replace(/X/g, "𝖷").replace(/Y/g, "𝖸").replace(/Z/g, "𝖹").replace(/1/g, "𝟣").replace(/2/g, "𝟤").replace(/3/g, "𝟥").replace(/4/g, "𝟦").replace(/5/g, "𝟧").replace(/6/g, "𝟨").replace(/7/g, "𝟩").replace(/8/g, "𝟪").replace(/9/g, "𝟫").replace(/0/g, "𝟢");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝖴𝗇𝗂𝖼𝗈𝖽𝖾 𝖳𝖾𝗑𝗍 𝖢𝗈𝗇𝗏𝖾𝗋𝗍𝖾𝗋";
+}
+italicSans = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝘢").replace(/b/g, "𝘣").replace(/c/g, "𝘤").replace(/d/g, "𝘥").replace(/e/g, "𝘦").replace(/f/g, "𝘧").replace(/g/g, "𝘨").replace(/h/g, "𝘩").replace(/i/g, "𝘪").replace(/j/g, "𝘫").replace(/k/g, "𝘬").replace(/l/g, "𝘭").replace(/m/g, "𝘮").replace(/n/g, "𝘯").replace(/o/g, "𝘰").replace(/p/g, "𝘱").replace(/q/g, "𝘲").replace(/r/g, "𝘳").replace(/s/g, "𝘴").replace(/t/g, "𝘵").replace(/u/g, "𝘶").replace(/v/g, "𝘷").replace(/w/g, "𝘸").replace(/x/g, "𝘹").replace(/y/g, "𝘺").replace(/z/g, "𝘻").replace(/A/g, "𝘈").replace(/B/g, "𝘉").replace(/C/g, "𝘊").replace(/D/g, "𝘋").replace(/E/g, "𝘌").replace(/F/g, "𝘍").replace(/G/g, "𝘎").replace(/H/g, "𝘏").replace(/I/g, "𝘐").replace(/J/g, "𝘑").replace(/K/g, "𝘒").replace(/L/g, "𝘓").replace(/M/g, "𝘔").replace(/N/g, "𝘕").replace(/O/g, "𝘖").replace(/P/g, "𝘗").replace(/Q/g, "𝘘").replace(/R/g, "𝘙").replace(/S/g, "𝘚").replace(/T/g, "𝘛").replace(/U/g, "𝘜").replace(/V/g, "𝘝").replace(/W/g, "𝘞").replace(/X/g, "𝘟").replace(/Y/g, "𝘠").replace(/Z/g, "𝘡");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝘜𝘯𝘪𝘤𝘰𝘥𝘦 𝘛𝘦𝘹𝘵 𝘊𝘰𝘯𝘷𝘦𝘳𝘵𝘦𝘳";
+}
+boldSans = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝗮").replace(/b/g, "𝗯").replace(/c/g, "𝗰").replace(/d/g, "𝗱").replace(/e/g, "𝗲").replace(/f/g, "𝗳").replace(/g/g, "𝗴").replace(/h/g, "𝗵").replace(/i/g, "𝗶").replace(/j/g, "𝗷").replace(/k/g, "𝗸").replace(/l/g, "𝗹").replace(/m/g, "𝗺").replace(/n/g, "𝗻").replace(/o/g, "𝗼").replace(/p/g, "𝗽").replace(/q/g, "𝗾").replace(/r/g, "𝗿").replace(/s/g, "𝘀").replace(/t/g, "𝘁").replace(/u/g, "𝘂").replace(/v/g, "𝘃").replace(/w/g, "𝘄").replace(/x/g, "𝘅").replace(/y/g, "𝘆").replace(/z/g, "𝘇").replace(/A/g, "𝗔").replace(/B/g, "𝗕").replace(/C/g, "𝗖").replace(/D/g, "𝗗").replace(/E/g, "𝗘").replace(/F/g, "𝗙").replace(/G/g, "𝗚").replace(/H/g, "𝗛").replace(/I/g, "𝗜").replace(/J/g, "𝗝").replace(/K/g, "𝗞").replace(/L/g, "𝗟").replace(/M/g, "𝗠").replace(/N/g, "𝗡").replace(/O/g, "𝗢").replace(/P/g, "𝗣").replace(/Q/g, "𝗤").replace(/R/g, "𝗥").replace(/S/g, "𝗦").replace(/T/g, "𝗧").replace(/U/g, "𝗨").replace(/V/g, "𝗩").replace(/W/g, "𝗪").replace(/X/g, "𝗫").replace(/Y/g, "𝗬").replace(/Z/g, "𝗭").replace(/1/g, "𝟭").replace(/2/g, "𝟮").replace(/3/g, "𝟯").replace(/4/g, "𝟰").replace(/5/g, "𝟱").replace(/6/g, "𝟲").replace(/7/g, "𝟳").replace(/8/g, "𝟴").replace(/9/g, "𝟵").replace(/0/g, "𝟬");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝗨𝗻𝗶𝗰𝗼𝗱𝗲 𝗧𝗲𝘅𝘁 𝗖𝗼𝗻𝘃𝗲𝗿𝘁𝗲𝗿";
+}
+boldItalicSans = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝙖").replace(/b/g, "𝙗").replace(/c/g, "𝙘").replace(/d/g, "𝙙").replace(/e/g, "𝙚").replace(/f/g, "𝙛").replace(/g/g, "𝙜").replace(/h/g, "𝙝").replace(/i/g, "𝙞").replace(/j/g, "𝙟").replace(/k/g, "𝙠").replace(/l/g, "𝙡").replace(/m/g, "𝙢").replace(/n/g, "𝙣").replace(/o/g, "𝙤").replace(/p/g, "𝙥").replace(/q/g, "𝙦").replace(/r/g, "𝙧").replace(/s/g, "𝙨").replace(/t/g, "𝙩").replace(/u/g, "𝙪").replace(/v/g, "𝙫").replace(/w/g, "𝙬").replace(/x/g, "𝙭").replace(/y/g, "𝙮").replace(/z/g, "𝙯").replace(/A/g, "𝘼").replace(/B/g, "𝘽").replace(/C/g, "𝘾").replace(/D/g, "𝘿").replace(/E/g, "𝙀").replace(/F/g, "𝙁").replace(/G/g, "𝙂").replace(/H/g, "𝙃").replace(/I/g, "𝙄").replace(/J/g, "𝙅").replace(/K/g, "𝙆").replace(/L/g, "𝙇").replace(/M/g, "𝙈").replace(/N/g, "𝙉").replace(/O/g, "𝙊").replace(/P/g, "𝙋").replace(/Q/g, "𝙌").replace(/R/g, "𝙍").replace(/S/g, "𝙎").replace(/T/g, "𝙏").replace(/U/g, "𝙐").replace(/V/g, "𝙑").replace(/W/g, "𝙒").replace(/X/g, "𝙓").replace(/Y/g, "𝙔").replace(/Z/g, "𝙕");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝙐𝙣𝙞𝙘𝙤𝙙𝙚 𝙏𝙚𝙭𝙩 𝘾𝙤𝙣𝙫𝙚𝙧𝙩𝙚𝙧";
+}
+fraktur = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝔞").replace(/b/g, "𝔟").replace(/c/g, "𝔠").replace(/d/g, "𝔡").replace(/e/g, "𝔢").replace(/f/g, "𝔣").replace(/g/g, "𝔤").replace(/h/g, "𝔥").replace(/i/g, "𝔦").replace(/j/g, "𝔧").replace(/k/g, "𝔨").replace(/l/g, "𝔩").replace(/m/g, "𝔪").replace(/n/g, "𝔫").replace(/o/g, "𝔬").replace(/p/g, "𝔭").replace(/q/g, "𝔮").replace(/r/g, "𝔯").replace(/s/g, "𝔰").replace(/t/g, "𝔱").replace(/u/g, "𝔲").replace(/v/g, "𝔳").replace(/w/g, "𝔴").replace(/x/g, "𝔵").replace(/y/g, "𝔶").replace(/z/g, "𝔷").replace(/A/g, "𝔄").replace(/B/g, "𝔅").replace(/C/g, "𝔠").replace(/D/g, "𝔇").replace(/E/g, "𝔈").replace(/F/g, "𝔉").replace(/G/g, "𝔊").replace(/H/g, "𝔥").replace(/I/g, "𝔦").replace(/J/g, "𝔍").replace(/K/g, "𝔎").replace(/L/g, "𝔏").replace(/M/g, "𝔐").replace(/N/g, "𝔑").replace(/O/g, "𝔒").replace(/P/g, "𝔓").replace(/Q/g, "𝔔").replace(/R/g, "𝔯").replace(/S/g, "𝔖").replace(/T/g, "𝔗").replace(/U/g, "𝔘").replace(/V/g, "𝔙").replace(/W/g, "𝔚").replace(/X/g, "𝔛").replace(/Y/g, "𝔜").replace(/Z/g, "𝔷");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝔘𝔫𝔦𝔠𝔬𝔡𝔢 𝔗𝔢𝔵𝔱 𝔠𝔬𝔫𝔳𝔢𝔯𝔱𝔢𝔯";
+}
+boldFraktur = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝖆").replace(/b/g, "𝖇").replace(/c/g, "𝖈").replace(/d/g, "𝖉").replace(/e/g, "𝖊").replace(/f/g, "𝖋").replace(/g/g, "𝖌").replace(/h/g, "𝖍").replace(/i/g, "𝖎").replace(/j/g, "𝖏").replace(/k/g, "𝖐").replace(/l/g, "𝖑").replace(/m/g, "𝖒").replace(/n/g, "𝖓").replace(/o/g, "𝖔").replace(/p/g, "𝖕").replace(/q/g, "𝖖").replace(/r/g, "𝖗").replace(/s/g, "𝖘").replace(/t/g, "𝖙").replace(/u/g, "𝖚").replace(/v/g, "𝖛").replace(/w/g, "𝖜").replace(/x/g, "𝖝").replace(/y/g, "𝖞").replace(/z/g, "𝖟").replace(/A/g, "𝕬").replace(/B/g, "𝕭").replace(/C/g, "𝕮").replace(/D/g, "𝕯").replace(/E/g, "𝕰").replace(/F/g, "𝕱").replace(/G/g, "𝕲").replace(/H/g, "𝕳").replace(/I/g, "𝕴").replace(/J/g, "𝕵").replace(/K/g, "𝕶").replace(/L/g, "𝕷").replace(/M/g, "𝕸").replace(/N/g, "𝕹").replace(/O/g, "𝕺").replace(/P/g, "𝕻").replace(/Q/g, "𝕼").replace(/R/g, "𝕽").replace(/S/g, "𝕾").replace(/T/g, "𝕿").replace(/U/g, "𝖀").replace(/V/g, "𝖁").replace(/W/g, "𝖂").replace(/X/g, "𝖃").replace(/Y/g, "𝖄").replace(/Z/g, "𝖅");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝖀𝖓𝖎𝖈𝖔𝖉𝖊 𝕿𝖊𝖝𝖙 𝕮𝖔𝖓𝖛𝖊𝖗𝖙𝖊𝖗";
+}
+doubleStruck = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝕒").replace(/b/g, "𝕓").replace(/c/g, "𝕔").replace(/d/g, "𝕕").replace(/e/g, "𝕖").replace(/f/g, "𝕗").replace(/g/g, "𝕘").replace(/h/g, "𝕙").replace(/i/g, "𝕚").replace(/j/g, "𝕛").replace(/k/g, "𝕜").replace(/l/g, "𝕝").replace(/m/g, "𝕞").replace(/n/g, "𝕟").replace(/o/g, "𝕠").replace(/p/g, "𝕡").replace(/q/g, "𝕢").replace(/r/g, "𝕣").replace(/s/g, "𝕤").replace(/t/g, "𝕥").replace(/u/g, "𝕦").replace(/v/g, "𝕧").replace(/w/g, "𝕨").replace(/x/g, "𝕩").replace(/y/g, "𝕪").replace(/z/g, "𝕫").replace(/A/g, "𝔸").replace(/B/g, "𝔹").replace(/C/g, "𝕔").replace(/D/g, "𝔻").replace(/E/g, "𝔼").replace(/F/g, "𝔽").replace(/G/g, "𝔾").replace(/H/g, "𝕙").replace(/I/g, "𝕀").replace(/J/g, "𝕁").replace(/K/g, "𝕂").replace(/L/g, "𝕃").replace(/M/g, "𝕄").replace(/N/g, "𝕟").replace(/O/g, "𝕆").replace(/P/g, "𝕡").replace(/Q/g, "𝕢").replace(/R/g, "𝕣").replace(/S/g, "𝕊").replace(/T/g, "𝕋").replace(/U/g, "𝕌").replace(/V/g, "𝕍").replace(/W/g, "𝕎").replace(/X/g, "𝕏").replace(/Y/g, "𝕐").replace(/Z/g, "𝕫").replace(/1/g, "𝟙").replace(/2/g, "𝟚").replace(/3/g, "𝟛").replace(/4/g, "𝟜").replace(/5/g, "𝟝").replace(/6/g, "𝟞").replace(/7/g, "𝟟").replace(/8/g, "𝟠").replace(/9/g, "𝟡").replace(/0/g, "𝟘");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝕌𝕟𝕚𝕔𝕠𝕕𝕖 𝕋𝕖𝕩𝕥 𝕔𝕠𝕟𝕧𝕖𝕣𝕥𝕖𝕣";
+}
+script = function (k) {
+ var output0 = document.getElementById("input").value;
+ var output1 = output0.replace(/a/g, "𝓪").replace(/b/g, "𝓫").replace(/c/g, "𝓬").replace(/d/g, "𝓭").replace(/e/g, "𝓮").replace(/f/g, "𝓯").replace(/g/g, "𝓰").replace(/h/g, "𝓱").replace(/i/g, "𝓲").replace(/j/g, "𝓳").replace(/k/g, "𝓴").replace(/l/g, "𝓵").replace(/m/g, "𝓶").replace(/n/g, "𝓷").replace(/o/g, "𝓸").replace(/p/g, "𝓹").replace(/q/g, "𝓺").replace(/r/g, "𝓻").replace(/s/g, "𝓼").replace(/t/g, "𝓽").replace(/u/g, "𝓾").replace(/v/g, "𝓿").replace(/w/g, "𝔀").replace(/x/g, "𝔁").replace(/y/g, "𝔂").replace(/z/g, "𝔃").replace(/A/g, "𝓐").replace(/B/g, "𝓑").replace(/C/g, "𝓒").replace(/D/g, "𝓓").replace(/E/g, "𝓔").replace(/F/g, "𝓕").replace(/G/g, "𝓖").replace(/H/g, "𝓗").replace(/I/g, "𝓘").replace(/J/g, "𝓙").replace(/K/g, "𝓚").replace(/L/g, "𝓛").replace(/M/g, "𝓜").replace(/N/g, "𝓝").replace(/O/g, "𝓞").replace(/P/g, "𝓟").replace(/Q/g, "𝓠").replace(/R/g, "𝓡").replace(/S/g, "𝓢").replace(/T/g, "𝓣").replace(/U/g, "𝓤").replace(/V/g, "𝓥").replace(/W/g, "𝓦").replace(/X/g, "𝓧").replace(/Y/g, "𝓨").replace(/Z/g, "𝓩");
+ document.getElementById("output").value = output1;
+ title.innerHTML = "𝓤𝓷𝓲𝓬𝓸𝓭𝓮 𝓣𝓮𝔁𝓽 𝓒𝓸𝓷𝓿𝓮𝓻𝓽𝓮𝓻";
+}
+  </script>
+
+ </body>
+</html>
